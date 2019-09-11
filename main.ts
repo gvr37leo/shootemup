@@ -1,5 +1,6 @@
 /// <reference path="node_modules/utilsx/utils.ts" />
 /// <reference path="node_modules/vectorx/vector.ts" />
+/// <reference path="node_modules/eventsystemx/EventSystem.ts" />
 /// <reference path="ability.ts" />
 /// <reference path="keybinding.ts" />
 
@@ -9,17 +10,36 @@ var crret = createCanvas(screensize.x,screensize.y)
 var canvas = crret.canvas
 var ctxt = crret.ctxt
 
-var keybindingmanager = new InputManager([
-    new Keybinding('shoot',' '),
-    new Keybinding('up','w'),
-    new Keybinding('right','d'),
-    new Keybinding('down','s'),
-    new Keybinding('left','a'),
-])
 
-var ability = new Ability(() => {
+var shoot = new Ability(() => {
 
 })
+
+class Database{
+    friendelybullets:Bullet
+    enemybullets:Bullet
+    enemys:Enemy
+    players:Player
+}
+
+class Bullet{
+
+}
+
+class Enemy{
+
+}
+
+class Player{
+
+}
+
+class Scene{
+    update:() => void
+    render:() => void
+}
+
+
 
 
 

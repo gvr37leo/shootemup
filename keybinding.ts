@@ -2,24 +2,37 @@ class Keybinding{
     
     when:() => boolean
 
-    constructor(public command:string, public key:string){
+    constructor(public action:string, public key:string){
 
     }
 }
 
 class InputManager{
     
-    eventSyste
 
-    constructor(public keybindings:Keybinding[]){
+    constructor(){
+
+    }
+
+    addBinding(keybinding:Keybinding){
 
     }
 
     listen2document(){
-        
+        document.addEventListener('keydown', e => {
+            this.send(e)
+        })
+
+        document.addEventListener('keyup', e => {
+            
+        })
     }
 
-    send(key){
+    send(e:KeyboardEvent){
+
+    }
+
+    listen(action:string,cb:() => void){
 
     }
 }

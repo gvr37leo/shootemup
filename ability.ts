@@ -19,6 +19,8 @@ class Ability{
         //cast while moving rule
         //must have target rule
         //must have valid target rule
+        //resource rule
+        //ammo rule
         //line of sight rule
     ]
     stopwatch:StopWatch = new StopWatch()
