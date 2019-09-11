@@ -34,18 +34,27 @@ class Player{
 
 }
 
+var stars:Vector[] = []
+function drawstar(star:Vector){
+    ctxt.fillRect(star.x / star.z,star.y / star.z,10,10)
+}
+
 class Scene{
     update:() => void
     render:() => void
 }
 
 
-
+for(var i = 0; i < 100; i++){
+    stars.push(new Vector(0,0,0))
+}
 
 
 loop((dt) => {
     dt /= 1000
     ctxt.clearRect(0,0,screensize.x,screensize.y)
 
-    ctxt.fillRect(10,10,10,10)
+    for(var star of stars){
+        drawstar(star)
+    }
 })
