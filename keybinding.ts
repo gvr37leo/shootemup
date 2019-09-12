@@ -2,7 +2,7 @@ class Keybinding{
     
     when:() => boolean
 
-    constructor(public action:string, public key:string){
+    constructor(public action:string, public keys:string[]){
 
     }
 }

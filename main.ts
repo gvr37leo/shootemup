@@ -3,6 +3,7 @@
 /// <reference path="node_modules/eventsystemx/EventSystem.ts" />
 /// <reference path="ability.ts" />
 /// <reference path="keybinding.ts" />
+/// <reference path="imageAnimation.ts" />
 
 
 var screensize = new Vector(document.documentElement.clientWidth,document.documentElement.clientHeight)
