@@ -44,11 +44,11 @@ class Ability{
         return this.rules.some(r => r.cb())
     }
 
-    callActivate(){
+    forceActivate(){
         this.cb()
     }
 
-    fire(){//activate
+    startAndHoldFire(){//activate
         if(this.firing == false){
             this.startfire()
         }else{
