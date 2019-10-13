@@ -28,6 +28,7 @@ class Ability{
     onCastFinished = new EventSystemVoid()
     shots: number = 0
     firing: boolean = false
+    onFire = new EventSystemVoid()
 
     
 
@@ -74,6 +75,7 @@ class Ability{
             this.shots = 1
             this.lastfire = Date.now()
             this.cb()
+            this.onFire.trigger()
         }
     }
 
@@ -85,6 +87,7 @@ class Ability{
         this.lastfire = Date.now()
         if(this.shots > 0){
             this.cb()
+            this.onFire.trigger()
         }
     }
 

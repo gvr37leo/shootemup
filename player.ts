@@ -12,6 +12,8 @@ class Player{
             dir.normalize()
         }
         this.pos.add(dir.scale(this.speed * gdt))
+        this.pos.x = clamp(this.pos.x,10,390)
+        this.pos.y = clamp(this.pos.y,10,790)
         
     }
 
