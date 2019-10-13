@@ -16,10 +16,8 @@
 /// <reference path="enemy.ts" />
 
 
-//background music
 //sound shooting and exploding enemys
 // 3 different enemys health/weapon
-//background stars
 
 
 

@@ -1,6 +1,12 @@
 var images = []
 var background:HTMLImageElement
 
+var backgroundmusic = new Howl({
+    src:'/sounds/background.wav',
+    volume: 0.1,
+    loop:true,
+})
+
 var explosion1 = new Howl({
     src:'/sounds/explosion1.wav',
     volume: 0.06,

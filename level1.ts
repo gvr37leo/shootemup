@@ -24,6 +24,7 @@ class Level1 implements Scene{
     }
 
     init(): void {
+        backgroundmusic.play()
         this.rng = new RNG(0)
         this.stopwatch = new StopWatch()
         this.stopwatch.start()
