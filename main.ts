@@ -16,7 +16,6 @@
 /// <reference path="enemy.ts" />
 
 
-//sound shooting and exploding enemys
 // 3 different enemys health/weapon
 
 
