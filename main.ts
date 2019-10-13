@@ -11,13 +11,20 @@
 /// <reference path="abilityCatalog.ts" />
 /// <reference path="bullet.ts" />
 /// <reference path="resourceLoading.ts" />
+/// <reference path="level1data.ts" />
+/// <reference path="player.ts" />
+/// <reference path="enemy.ts" />
+
+
+//background music
+//sound shooting and exploding enemys
+// 3 different enemys health/weapon
+//background stars
 
 
 
 
-
-
-var screensize = new Vector(document.documentElement.clientWidth,document.documentElement.clientHeight)
+var screensize = new Vector(400,800)
 var crret = createCanvas(screensize.x,screensize.y)
 var canvas = crret.canvas
 var ctxt = crret.ctxt

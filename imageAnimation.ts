@@ -45,7 +45,8 @@ class SpriteAnimation{
     anim:Anim = new Anim()
     sprites:HTMLImageElement[] = []
 
-    constructor(){
+
+    constructor(public pos:Vector){
         this.anim.stopwatch.start()
         this.anim.begin = 0
         this.anim.end = 1
@@ -53,10 +54,10 @@ class SpriteAnimation{
         this.anim.animType = AnimType.once
     }
 
-    draw(ctxt:CanvasRenderingContext2D,pos:Vector){
+    draw(ctxt:CanvasRenderingContext2D){
         if(this.sprites.length > 0){
             var i = Math.min(Math.floor(this.anim.get() * this.sprites.length), this.sprites.length - 1) 
-            ctxt.drawImage(this.sprites[i],pos.x,pos.y)
+            ctxt.drawImage(this.sprites[i],this.pos.x,this.pos.y)
         }
     }
 
@@ -65,22 +66,26 @@ class SpriteAnimation{
 
 class AtlasAnimation{
     anim:Anim = new Anim()
+    positions: Vector[];
+    halfimageSize: Vector;
     
 
-    constructor(public imageid:number,public pos:Vector, public positions: Vector[],  public imageSize: Vector){
+    constructor(public imageid:number,public pos:Vector, public atlasLayout:AtlasLayout){
         this.anim.stopwatch.start()
         this.anim.begin = 0
         this.anim.end = 1
         this.anim.duration = 1000
         this.anim.animType = AnimType.repeat
+        this.positions = disectAtlas(this.atlasLayout.rows,this.atlasLayout.columns,this.atlasLayout.imageSize,this.atlasLayout.padding,this.atlasLayout.offset)
+        this.halfimageSize = this.atlasLayout.imageSize.c().scale(0.5)
     }
 
     draw(ctxt:CanvasRenderingContext2D,images:HTMLImageElement[]){
         if(this.positions.length > 0){
             var i = Math.min(Math.floor(this.anim.get() * this.positions.length), this.positions.length - 1) 
             var spos = this.positions[i]
-            var dpos = this.pos.c().sub(this.imageSize.c().scale(0.5))
-            ctxt.drawImage(images[this.imageid],spos.x,spos.y,this.imageSize.x,this.imageSize.y,dpos.x,dpos.y,this.imageSize.x,this.imageSize.y)
+            var dpos = this.pos.c().sub(this.halfimageSize)
+            ctxt.drawImage(images[this.imageid],spos.x,spos.y,this.atlasLayout.imageSize.x,this.atlasLayout.imageSize.y,dpos.x,dpos.y,this.atlasLayout.imageSize.x,this.atlasLayout.imageSize.y)
         }
     }
 }
