@@ -13,7 +13,6 @@ class Bullet{
 
     draw(){
         drawImageCentered(ctxt,images[3],this.pos)
-        this.pos.draw(ctxt)
     }
 
     serialize(){

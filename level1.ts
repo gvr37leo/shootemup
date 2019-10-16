@@ -18,6 +18,7 @@ class Level1 implements Scene{
     rng: RNG
     animations: AtlasAnimation[] = []
     stars: Vector[]
+    bulletsafezone: Rect
 
     constructor(){
 
@@ -31,11 +32,30 @@ class Level1 implements Scene{
         this.gamedb = new GameDB()
         this.gamedb.player = new Player()
         var player = this.gamedb.player
+        this.bulletsafezone = new Rect(new Vector(-10,-10),screensize.c().add(new Vector(10,10)))
         player.pos = new Vector(200,750)
-        player.ability = createOrderlyShotgunBlastAbility(player.pos,this.gamedb)
-        player.ability.onFire.listen(() => {
+        document.addEventListener('keydown',e => {
+            if(e.key == 'f'){
+                if(player.activeAbility == player.shootability){
+                    player.activeAbility = player.shotgunability
+                }else{
+                    player.activeAbility = player.shootability
+                }
+            }
+        })
+        player.shotgunability = createOrderlyShotgunBlastAbility(player.pos,this.gamedb)
+        player.shotgunability.onFire.listen(() => {
             gunshot.play()
         })
+        
+        player.shootability = new Ability(() => {
+            this.gamedb.friendlyBullets.push(new Bullet(player.pos.c(), new Vector(0,-400)))
+        })
+        player.shootability.cooldown = 300
+        player.shootability.onFire.listen(() => {
+            gunshot.play()
+        })
+        player.activeAbility = player.shootability
         this.eventIndex = 0
         this.stars = []
         for(var i = 0; i < 100;i++){
@@ -91,7 +111,7 @@ class Level1 implements Scene{
         var player = this.gamedb.player
         player.update()
         if(keys[32]){
-            player.ability.tapfire()
+            player.activeAbility.tapfire()
         }
         this.gamedb.friendlyBullets.forEach(b => b.update(gdt))
         this.gamedb.enemybullets.forEach(b => b.update(gdt))
@@ -134,6 +154,10 @@ class Level1 implements Scene{
         for(var i = 0; i < this.stars.length;i++){
             this.stars[i].y += 100 * gdt
         }
+
+        this.gamedb.friendlyBullets = this.gamedb.friendlyBullets.filter(b => {
+            return this.bulletsafezone.collidePoint(b.pos)
+        })
     }    
     
     render(): void {

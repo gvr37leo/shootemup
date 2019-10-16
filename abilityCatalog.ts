@@ -1,9 +1,8 @@
 function createAimedShotAbility(pos:Vector,target:Vector,gamedb:GameDB){
     var speed = 100
     return new Ability(() => {
-        gamedb.friendlyBullets.push(new Bullet(pos.c(),pos.to(target).normalize().scale(speed))) 
+        gamedb.enemybullets.push(new Bullet(pos.c(),pos.to(target).normalize().scale(speed))) 
     })
-    
 }
 
 function createInstantRingAbility(pos:Vector,gamedb:GameDB){
@@ -11,7 +10,7 @@ function createInstantRingAbility(pos:Vector,gamedb:GameDB){
     var speed = 100
     return new Ability(() => {
         for(var i = 0; i < amount; i++){
-            gamedb.friendlyBullets.push(new Bullet(pos.c(),new Vector(0,1).rotate2d(i / amount).scale(speed)))
+            gamedb.enemybullets.push(new Bullet(pos.c(),new Vector(0,1).rotate2d(i / amount).scale(speed)))
         }
     })
 }

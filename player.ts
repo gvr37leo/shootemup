@@ -1,7 +1,10 @@
 class Player{
     pos:Vector = new Vector()
     speed:number = 300  
-    ability: Ability
+    activeAbility: Ability
+
+    shotgunability:Ability
+    shootability:Ability
 
     constructor(){
     }
@@ -19,6 +22,5 @@ class Player{
 
     draw(){
         drawImageCentered(ctxt,images[2],this.pos)
-        this.pos.draw(ctxt)
     }
 }

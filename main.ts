@@ -17,7 +17,8 @@
 
 
 // 3 different enemys health/weapon
-
+// make enemys shoot
+// swap shotgun and normal
 
 
 
