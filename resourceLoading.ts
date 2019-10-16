@@ -22,7 +22,11 @@ var gunshot = new Howl({
     volume: 0.16,
 })
 
-loadImages(['/images/explosion-6.png','/images/background.png','/images/airplain.png','/images/bullet.png','/images/explosion-6.png']).then(imagesL => {
+loadImages(['/images/explosion-6.png','/images/background.png','/images/airplain.png','/images/bullet.png','/images/explosion-6.png',
+'/images/enemysmall.png',
+'/images/enemymedium.png',
+'/images/enemylarge.png',
+]).then(imagesL => {
     images = imagesL
     background = images[1]
     onResourcesLoaded.trigger()

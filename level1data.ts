@@ -5,7 +5,7 @@ function createEnemylvl1(gamedb:GameDB){
     enemy.speed = 150
     enemy.hitbox = Rect.fromWidthHeight(new Vector(0,0),new Vector(40,40))
     enemy.ability = createAimedShotAbility(new Vector(0,0),new Vector(0,1),null)
-    enemy.image = images[2]
+    enemy.image = images[5]
     return enemy
 }
 
@@ -15,7 +15,7 @@ function createEnemylvl2(gamedb:GameDB){
     enemy.speed = 300
     enemy.hitbox = Rect.fromWidthHeight(new Vector(0,0),new Vector(40,40))
     enemy.ability = createAimedShotAbility(new Vector(0,0),new Vector(0,1),null)
-    enemy.image = images[2]
+    enemy.image = images[6]
     return enemy
 }
 
@@ -25,7 +25,7 @@ function createEnemylvl3(gamedb:GameDB){
     enemy.speed = 100
     enemy.hitbox = Rect.fromWidthHeight(new Vector(0,0),new Vector(80,80))
     enemy.ability = createOrderlyShotgunBlastAbility(new Vector(0,0),null)
-    enemy.image = images[2]
+    enemy.image = images[7]
     return enemy
 }
 
